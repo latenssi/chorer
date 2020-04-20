@@ -11,7 +11,11 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Footer({ onAddChoreClick, onAddTaskClick }) {
+export default function Footer({
+  onAddChoreClick,
+  onAddAreaClick,
+  onAddTaskClick,
+}) {
   const classes = useStyles();
 
   return (
@@ -24,7 +28,7 @@ export default function Footer({ onAddChoreClick, onAddTaskClick }) {
       <BottomNavigationAction
         label="Add Area"
         icon={<AddIcon />}
-        onClick={onAddTaskClick}
+        onClick={onAddAreaClick}
       />
       <BottomNavigationAction
         label="Add Task"

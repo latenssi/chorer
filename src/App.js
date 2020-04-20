@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import AddChore from "./components/AddChore";
+import AddTask from "./components/AddTask";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,10 +23,13 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
-  const [state, setState] = React.useState({ addChoreOpen: false });
+  const [state, setState] = React.useState({
+    addChoreOpen: false,
+    addTaskOpen: false,
+  });
 
-  const handleToggleAddChore = (open) => () => {
-    setState({ ...state, addChoreOpen: open });
+  const handleToggleDialog = (key, open) => () => {
+    setState({ ...state, [key]: open });
   };
 
   return (
@@ -34,12 +38,23 @@ function App() {
       <div className={classes.root}>
         <Header />
         <main className={classes.main}></main>
-        <Footer onAddChoreClick={handleToggleAddChore(true)} />
+        <Footer
+          onAddChoreClick={handleToggleDialog("addChoreOpen", true)}
+          onAddTaskClick={handleToggleDialog("addTaskOpen", true)}
+        />
         <AddChore
           open={state.addChoreOpen}
-          closeDialog={handleToggleAddChore(false)}
+          onClose={handleToggleDialog("addChoreOpen", false)}
           onSubmit={(data, cb) => {
-            console.log(data);
+            console.log("New Chore", data);
+            if (cb) cb();
+          }}
+        />
+        <AddTask
+          open={state.addTaskOpen}
+          onClose={handleToggleDialog("addTaskOpen", false)}
+          onSubmit={(data, cb) => {
+            console.log("New Task", data);
             if (cb) cb();
           }}
         />

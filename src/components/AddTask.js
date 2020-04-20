@@ -10,9 +10,9 @@ import FormDialog from "./FormDialog";
 
 const defaultState = { areaSpecific: false, areaId: "", name: "" };
 
-export default function AddChore(props) {
+export default function AddTask(props) {
   return (
-    <FormDialog defaultState={defaultState} title="New Chore" {...props}>
+    <FormDialog defaultState={defaultState} title="New Task" {...props}>
       {(formState, handleInputChange) => (
         <React.Fragment>
           <FormControlLabel

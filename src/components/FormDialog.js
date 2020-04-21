@@ -42,7 +42,11 @@ export default function FormDialog({
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (onSubmit) onSubmit(formState, handleClear);
+    if (onSubmit)
+      onSubmit(formState, (err) => {
+        if (err) return;
+        handleClear();
+      });
   };
 
   const handleClear = () => {

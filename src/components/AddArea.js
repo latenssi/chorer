@@ -17,6 +17,7 @@ export default function AddArea(props) {
             value={formState.name}
             onChange={handleInputChange}
             autoFocus
+            required
           />
         </React.Fragment>
       )}

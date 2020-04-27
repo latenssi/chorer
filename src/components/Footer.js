@@ -3,7 +3,11 @@ import React from "react";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 
+import Paper from "@material-ui/core/Paper";
+
 import AddIcon from "@material-ui/icons/Add";
+
+const Component = (props) => <Paper variant="outlined" square {...props} />;
 
 export default function Footer({
   onAddChoreClick,
@@ -11,7 +15,7 @@ export default function Footer({
   onAddScheduleClick,
 }) {
   return (
-    <BottomNavigation showLabels>
+    <BottomNavigation showLabels component={Component}>
       <BottomNavigationAction
         label="Chore"
         icon={<AddIcon />}

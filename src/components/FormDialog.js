@@ -40,6 +40,10 @@ export default function FormDialog({
 
   const [formState, setFormState] = React.useState(defaultState);
 
+  React.useEffect(() => {
+    setFormState(defaultState);
+  }, [defaultState]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (onSubmit)

@@ -2,10 +2,11 @@ import React from "react";
 
 import PouchDB from "pouchdb";
 
-const remoteDbPath = process.env.REACT_APP_DB_PATH;
+const dbName = process.env.REACT_APP_DB_NAME || "chorer-dev";
+const remoteDbUrl = process.env.REACT_APP_DB_URL;
 
 export function usePouchDB() {
-  const [state, setState] = React.useState(null);
+  const [state, setState] = React.useState({});
 
   const remoteDB = React.useRef();
   const localDB = React.useRef();
@@ -27,10 +28,10 @@ export function usePouchDB() {
   };
 
   React.useEffect(() => {
-    localDB.current = new PouchDB("chorer");
+    localDB.current = new PouchDB(dbName);
 
-    if (remoteDbPath) {
-      remoteDB.current = new PouchDB(remoteDbPath);
+    if (remoteDbUrl) {
+      remoteDB.current = new PouchDB(`${remoteDbUrl}/${dbName}`);
     }
 
     if (localDB.current && remoteDB.current) {

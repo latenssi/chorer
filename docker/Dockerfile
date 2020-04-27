@@ -1,6 +1,13 @@
 # BUILD
 FROM node:13-alpine as build
 
+RUN apk add --update \
+    build-base \
+    gcc \
+    wget \
+    git \
+    python3
+
 WORKDIR /src
 
 COPY . .

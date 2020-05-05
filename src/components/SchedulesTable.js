@@ -46,8 +46,6 @@ const useStyles = makeStyles({
 });
 
 const orderByKey = (key) => (a, b) => {
-  if (!a[key]) return 1;
-
   return a[key] - b[key];
 };
 

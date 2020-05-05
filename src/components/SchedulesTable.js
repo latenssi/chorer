@@ -39,7 +39,6 @@ const locale = {
 };
 
 const useStyles = makeStyles({
-  table: {},
   overdue: { color: red[400] },
   dueToday: { color: yellow[800] },
   dueTomorrow: { color: green[400] },
@@ -77,7 +76,7 @@ export default function ScheduleTable({
 
   return (
     <TableContainer>
-      <Table className={classes.table} aria-label="simple table">
+      <Table>
         <TableHead>
           <TableRow>
             <TableCell></TableCell>

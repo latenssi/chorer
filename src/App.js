@@ -1,11 +1,6 @@
 import React from "react";
 
-import {
-  createMuiTheme,
-  makeStyles,
-  ThemeProvider,
-} from "@material-ui/core/styles";
-import { cyan } from "@material-ui/core/colors";
+import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import { SnackbarProvider, useSnackbar } from "notistack";
@@ -40,10 +35,6 @@ const useStyles = makeStyles({
     overflowY: "auto",
     padding: "0.5rem",
   },
-  success: { color: "white" },
-  error: { color: "white" },
-  warning: { color: "white" },
-  info: { color: "white" },
 });
 
 function App() {
@@ -312,31 +303,9 @@ function App() {
 }
 
 export default function IntegratedApp() {
-  const theme = React.useMemo(
-    () =>
-      createMuiTheme({
-        palette: {
-          type: "dark",
-          primary: cyan,
-        },
-      }),
-    []
-  );
-
-  const classes = useStyles();
-
   return (
-    <ThemeProvider theme={theme}>
-      <SnackbarProvider
-        classes={{
-          variantSuccess: classes.success,
-          variantError: classes.error,
-          variantWarning: classes.warning,
-          variantInfo: classes.info,
-        }}
-      >
-        <App />
-      </SnackbarProvider>
-    </ThemeProvider>
+    <SnackbarProvider>
+      <App />
+    </SnackbarProvider>
   );
 }

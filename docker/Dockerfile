@@ -10,7 +10,7 @@ RUN apk add --update \
 
 WORKDIR /src
 
-COPY package*.json .
+COPY package*.json ./
 
 RUN npm ci
 

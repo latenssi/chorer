@@ -70,6 +70,10 @@ function App() {
     setAddDialogState({ ...addDialogState, [key]: open });
   };
 
+  const handleExpandedChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
   const handleCreate = (data) => {
     const hash = md5(JSON.stringify(data));
     const exist =
@@ -108,19 +112,18 @@ function App() {
     }
   };
 
-  const handleEdit = (entry) => {
-    if (!entry.type) return;
-    setEditState({ ...editState, [entry.type]: entry });
+  const handleEdit = ({ _id, type }) => {
+    const entry = state[type].find((e) => e._id === _id);
+    if (!type || !entry) return;
+    setEditState({ ...editState, [type]: entry });
   };
 
-  const handleRecordEvent = (entry, event) => {
+  const handleRecordEvent = ({ _id, type }, event) => {
+    const entry = state[type].find((e) => e._id === _id);
+    if (!type || !entry) return;
     entry.events = entry.events || [];
     entry.events.unshift(event);
     handleUpdate(entry);
-  };
-
-  const handleExpandedChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
   };
 
   const addDialogs = [

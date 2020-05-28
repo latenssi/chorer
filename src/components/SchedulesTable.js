@@ -16,7 +16,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
 
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
@@ -110,20 +110,18 @@ export default function ScheduleTable({
                 {notSmall && <TableCell align="right">{item.period}</TableCell>}
                 <TableCell align="right">
                   <ButtonGroup
+                    variant="text"
                     orientation={notSmall ? "horizontal" : "vertical"}
                   >
-                    <IconButton onClick={() => handleRec(item)} color="primary">
+                    <Button onClick={() => handleRec(item)} color="primary">
                       <CheckIcon />
-                    </IconButton>
-                    <IconButton onClick={() => handleEdit(item)}>
+                    </Button>
+                    <Button onClick={() => handleEdit(item)}>
                       <EditIcon />
-                    </IconButton>
-                    <IconButton
-                      onClick={() => handleDel(item)}
-                      color="secondary"
-                    >
+                    </Button>
+                    <Button onClick={() => handleDel(item)} color="secondary">
                       <DeleteIcon />
-                    </IconButton>
+                    </Button>
                   </ButtonGroup>
                 </TableCell>
               </TableRow>

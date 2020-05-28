@@ -97,7 +97,7 @@ function App() {
   };
 
   const handleDelete = (entry) => {
-    if (window.confirm("Delete schedule?")) {
+    if (window.confirm("Delete item?")) {
       db.remove(entry._id, entry._rev);
       enqueueSnackbar("Item deleted!", { variant: "success" });
     }

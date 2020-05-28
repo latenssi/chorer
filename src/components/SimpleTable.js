@@ -10,7 +10,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
 
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
@@ -37,13 +37,16 @@ export default function ChoresTable({ items = [], onDelete, onEdit }) {
                 {item.name}
               </TableCell>
               <TableCell align="right">
-                <ButtonGroup orientation={notSmall ? "horizontal" : "vertical"}>
-                  <IconButton onClick={() => handleEdit(item)}>
+                <ButtonGroup
+                  variant="text"
+                  orientation={notSmall ? "horizontal" : "vertical"}
+                >
+                  <Button onClick={() => handleEdit(item)}>
                     <EditIcon />
-                  </IconButton>
-                  <IconButton onClick={() => handleDel(item)} color="secondary">
+                  </Button>
+                  <Button onClick={() => handleDel(item)} color="secondary">
                     <DeleteIcon />
-                  </IconButton>
+                  </Button>
                 </ButtonGroup>
               </TableCell>
             </TableRow>

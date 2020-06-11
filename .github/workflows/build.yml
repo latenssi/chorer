@@ -13,4 +13,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: latenssi/chorer
           tags: test
-          dockerfile: docker/Dockerfile
+          dockerfile: ./docker/Dockerfile
